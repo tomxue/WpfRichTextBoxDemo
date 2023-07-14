@@ -54,8 +54,11 @@ namespace WpfApp1
             int indexStart_abs = start.Text.Length;
             int indexEnd_abs = end.Text.Length;
 
-            Debug.WriteLine($"Current selection is:{rtb.Selection.Text}, Start: {indexStart}, End: {indexEnd}, " +
-                $"indexStart_abs: {indexStart_abs}, indexEnd_abs: {indexEnd_abs}");
+            if (rtb.Selection.Text != "")
+            {
+                Debug.WriteLine($"Current selection is:{rtb.Selection.Text}, Start: {indexStart}, End: {indexEnd}, " +
+                    $"indexStart_abs: {indexStart_abs}, indexEnd_abs: {indexEnd_abs}");
+            }
         }
     }
 }
