@@ -60,5 +60,17 @@ namespace WpfApp1
                     $"indexStart_abs: {indexStart_abs}, indexEnd_abs: {indexEnd_abs}");
             }
         }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            rtb.Document.Blocks.Clear();
+            rtb.Document.Blocks.Add(new Paragraph(new Run("Set new text string: 123")));
+        }
+
+        private void GetContentButton_Click(object sender, RoutedEventArgs e)
+        {
+            string richText = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text;
+            Debug.WriteLine($"Get rich text content is:{richText}");
+        }
     }
 }
