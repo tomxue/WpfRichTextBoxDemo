@@ -27,7 +27,7 @@ namespace WpfApp1
             InitializeComponent();
 
             Paragraph paragraph = new Paragraph();
-            rtb.Document = new FlowDocument(paragraph);
+            FlowDocument doc = rtb.Document = new FlowDocument(paragraph);
 
             var from = "  user1";
             var text = "chat message goes here";
@@ -37,6 +37,25 @@ namespace WpfApp1
             });
             paragraph.Inlines.Add(text);
             //paragraph.Inlines.Add(new LineBreak());
+
+            paragraph.Inlines.Add(new Run(from + ": ")
+            {
+                Background = Brushes.Yellow
+            });
+            paragraph.Inlines.Add(text);
+
+            TextPointer contentStart = doc.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward);
+            var nextStart = contentStart.GetLineStartPosition(0);
+
+            TextPointer pointer = doc.ContentStart;
+            TextPointer len = nextStart.GetPositionAtOffset(8);
+            TextRange wordRange = new TextRange(nextStart, len);
+            wordRange.ApplyPropertyValue(TextElement.BackgroundProperty, Brushes.Red);
+
+            TextPointer start = pointer.GetPositionAtOffset(15);    // set below indexStart to this argument
+            len = start.GetPositionAtOffset(4); // set below (indexEnd - indexStart) to this argument as the length
+            TextRange wordRange2 = new TextRange(start, len);
+            wordRange2.ApplyPropertyValue(TextElement.BackgroundProperty, Brushes.Blue);
 
             string richText = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text;
             Debug.WriteLine($"Current rich text is:{richText}");
