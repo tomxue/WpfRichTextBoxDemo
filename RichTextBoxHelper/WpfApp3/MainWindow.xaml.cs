@@ -70,43 +70,6 @@ namespace WpfApp3
             return ret;
         }
 
-        internal string Select(RichTextBox rtb, SolidColorBrush brush)
-        {
-            // Get text selection:
-            TextSelection textRange = rtb.Selection;
-
-            var docStart = rtb.Document.ContentStart;
-            var indexStart = docStart.GetOffsetToPosition(rtb.Selection.Start);
-            var indexEnd = docStart.GetOffsetToPosition(rtb.Selection.End);
-
-            // Get text starting point:
-            TextPointer start = rtb.Document.ContentStart;
-
-            // Get begin and end requested:
-            TextPointer startPos = GetTextPointAt(start, indexStart);
-            TextPointer endPos = GetTextPointAt(start, indexStart + indexEnd);
-
-            TextRange start2 = new TextRange(docStart, rtb.Selection.Start);
-            TextRange end2 = new TextRange(docStart, rtb.Selection.End);
-            int indexStart_abs = start2.Text.Length;
-            int indexEnd_abs = end2.Text.Length;
-
-            Debug.WriteLine($"indexStart: {indexStart}");
-            Debug.WriteLine($"indexEnd: {indexEnd}");
-            Debug.WriteLine($"indexStart_abs: {indexStart_abs}");
-            Debug.WriteLine($"indexEnd_abs: {indexEnd_abs}");
-
-            // New selection of text:
-            //textRange.Select(startPos, endPos);
-
-            // Apply property to the selection:
-            textRange.ApplyPropertyValue(TextElement.BackgroundProperty, brush);
-
-            // Return selection text:
-            string ret = rtb.Selection.Text;
-            return ret;
-        }
-
         internal string Select(RichTextBox rtb, int offset, int length, SolidColorBrush brush)
         {
             rtb.SelectAll();
