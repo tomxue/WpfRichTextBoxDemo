@@ -12,9 +12,12 @@
     <StackPanel>
         <TextBox Text="{Binding model.ID}" Width="200" Height="40"/>
         <TextBox Text="{Binding model.Name}" Width="200" Height="40" Margin="0 20 0 20"/>
-        <RichTextBox Name="rtf" local:RichTextBoxHelper.DocumentXaml="{Binding model.Description}" Width="200" Height="40" />
+        <RichTextBox Name="rtf" local:RichTextBoxHelper.DocumentXaml="{Binding model.Description}" 
+                     SelectionChanged="rtf_SelectionChanged"
+                     Width="200" Height="40" />
         <RichTextBox Name="rtf2" local:RichTextBoxHelper.DocumentXaml="{Binding model.Description}" Width="200" Height="40" />
-        <!--<WrapPanel VerticalAlignment="Center" Width="100" Height="50">
+        <Button Width="100" Height="50" Click="Button_Click"></Button>
+            <!--<WrapPanel VerticalAlignment="Center" Width="100" Height="50">
             <ToggleButton x:Name="BoldButton" Command="{Binding DataContext.ToggleBold}" CommandTarget="{Binding ElementName=rtf}" 
                           ToolTip="Bold" Width="20" Margin="0,1,0,1">
                 <Image Source="/fontbold.png" Stretch="None" SnapsToDevicePixels="True" />
