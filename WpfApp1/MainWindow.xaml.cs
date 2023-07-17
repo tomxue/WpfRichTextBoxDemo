@@ -91,5 +91,10 @@ namespace WpfApp1
             string richText = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text;
             Debug.WriteLine($"Get rich text content is:{richText}");
         }
+
+        private void ChangeWidthButton_Click(object sender, RoutedEventArgs e)
+        {
+            rtb.Width -= 20;
+        }
     }
 }

@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <RichTextBox x:Name="rtb" Width="300" Height="50" SelectionChanged="RichTextBox_SelectionChanged"></RichTextBox>
+        <RichTextBox x:Name="rtb" Width="300" Height="50" SelectionChanged="RichTextBox_SelectionChanged" VerticalScrollBarVisibility="Visible"></RichTextBox>
         <Button Content="Reset" FontSize="20" Click="ResetButton_Click" Width="100" Height="50" Margin="0 100 0 0"></Button>
         <Button Content="GetContent" FontSize="18" Click="GetContentButton_Click" Width="100" Height="50" Margin="0 200 0 0"></Button>
+        <Button Content="ChangeWidth" FontSize="14" Click="ChangeWidthButton_Click" Width="100" Height="50" Margin="0 300 0 0"></Button>
     </Grid>
 </Window>
